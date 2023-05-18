@@ -23,20 +23,23 @@ scene.add( background );
 const foreground = new THREE.Mesh (
     new THREE.PlaneGeometry( 16, 16 ),
     new THREE.MeshPhysicalMaterial( {
-        roughness: 0.5,
+        roughness: 0.55,
         transmission: 1
     } )
 );
 foreground.position.z = 2;
 scene.add( foreground );
 
-const light1 = new THREE.PointLight( 0xeb7d00, 2, 6);
+const light1 = new THREE.PointLight( 0xfca247, 5, 6 );
 light1.position.set( -4, -2, 1 );
 scene.add( light1 );
 
-const light2 = new THREE.PointLight( 0x005aeb, 2, 6 );
+const light2 = new THREE.PointLight( 0x47c3fc, 5, 6 );
 light2.position.set ( 5, 2, 1);
 scene.add( light2 );
+
+const ambientLight = new THREE.AmbientLight( 0x404040, 0.8 );
+scene.add( ambientLight );
 
 // const pointLightHelper = new THREE.PointLightHelper( light1, 1 );
 // scene.add( pointLightHelper );
@@ -55,7 +58,7 @@ const animate = () => {
     if (light2.position.x < -13) {
         light2.position.x = 12;
     }
-    
+
     // console.log(light1.position.x);
 
 	renderer.render( scene, camera );
