@@ -74,18 +74,16 @@ const animate = () => {
       
         if (positionX > boundary || positionX < -boundary) {
           light.position.x = Math.sign(positionX) * boundary;
-          const angle = randomAngle();
-          light.translationX = Math.cos(angle) * speed;
+          light.translationX = Math.cos(randomAngle()) * speed;
         }
       
         if (positionY > boundary || positionY < -boundary) {
           light.position.y = Math.sign(positionY) * boundary;
-          const angle = randomAngle();
-          light.translationY = Math.sin(angle) * speed;
+          light.translationY = Math.sin(randomAngle()) * speed;
         }
             
-        lights[i].position.x += lights[i].translationX;
-        lights[i].position.y += lights[i].translationY;
+        lights[i].position.x += light.translationX;
+        lights[i].position.y += light.translationY;
     }
 
 	renderer.render( scene, camera );
