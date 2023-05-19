@@ -49,7 +49,7 @@ scene.add( ambientLight );
 camera.position.z = 5;
 
 const randomAngle = () => {
-    return Math.random() * Math.PI * 2; // Rabdom angle in radians
+    return Math.random() * Math.PI * 2; // Random angle in radians
 }
 
 const speed = 0.02;
