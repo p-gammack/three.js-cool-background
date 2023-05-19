@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { gsap } from 'gsap';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -92,5 +93,16 @@ const animate = () => {
 
 	renderer.render( scene, camera );
 }
+
+const heroElements = document.getElementById('hero-text').querySelectorAll('*');
+
+gsap.from(heroElements, {
+    duration: 0.5,
+    delay: 1.5,
+    stagger: 0.1,
+    opacity: 0,
+    y: 28,
+    ease: "power1.out"
+});
 
 animate();
