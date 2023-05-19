@@ -23,7 +23,7 @@ scene.add( background );
 const foreground = new THREE.Mesh (
     new THREE.PlaneGeometry( 16, 16 ),
     new THREE.MeshPhysicalMaterial( {
-        roughness: 0.55,
+        roughness: 0.58,
         transmission: 1
     } )
 );
