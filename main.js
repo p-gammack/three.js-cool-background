@@ -38,6 +38,8 @@ const light2 = new THREE.PointLight( 0x47c3fc, 10, 6 );
 light2.position.set ( 5, 2, 1);
 scene.add( light2 );
 
+const lights = [light1, light2];
+
 const ambientLight = new THREE.AmbientLight( 0x404040, 0.8 );
 scene.add( ambientLight );
 
@@ -46,20 +48,45 @@ scene.add( ambientLight );
 
 camera.position.z = 5;
 
+const randomAngle = () => {
+    return Math.random() * Math.PI * 2; // Rabdom angle in radians
+}
+
+const speed = 0.02;
+const boundary = 5;
+
+for (let i = 0; i < lights.length; i++) {
+    const angle = randomAngle();
+    const translationX = Math.cos(angle) * speed;
+    const translationY = Math.sin(angle) * speed;
+  
+    lights[i].translationX = translationX;
+    lights[i].translationY = translationY;
+  }
+
 const animate = () => {
 	requestAnimationFrame( animate );
 
-    light1.position.x += 0.001;
-    light2.position.x -= 0.001;
-
-    if (light1.position.x > 11) {
-        light1.position.x = -12;
+    for (let i = 0; i < lights.length; i++) {
+        const light = lights[i];
+        const positionX = light.position.x;
+        const positionY = light.position.y;
+      
+        if (positionX > boundary || positionX < -boundary) {
+          light.position.x = Math.sign(positionX) * boundary;
+          const angle = randomAngle();
+          light.translationX = Math.cos(angle) * speed;
+        }
+      
+        if (positionY > boundary || positionY < -boundary) {
+          light.position.y = Math.sign(positionY) * boundary;
+          const angle = randomAngle();
+          light.translationY = Math.sin(angle) * speed;
+        }
+            
+        lights[i].position.x += lights[i].translationX;
+        lights[i].position.y += lights[i].translationY;
     }
-    if (light2.position.x < -13) {
-        light2.position.x = 12;
-    }
-
-    // console.log(light1.position.x);
 
 	renderer.render( scene, camera );
 }
