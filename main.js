@@ -30,11 +30,11 @@ const foreground = new THREE.Mesh (
 foreground.position.z = 2;
 scene.add( foreground );
 
-const light1 = new THREE.PointLight( 0xfca247, 10, 6 );
+const light1 = new THREE.PointLight( 0xfca247, 10, 8 );
 light1.position.set( -4, -2, 1 );
 scene.add( light1 );
 
-const light2 = new THREE.PointLight( 0x47c3fc, 10, 6 );
+const light2 = new THREE.PointLight( 0x47c3fc, 10, 8 );
 light2.position.set ( 5, 2, 1);
 scene.add( light2 );
 
