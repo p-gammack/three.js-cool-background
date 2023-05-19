@@ -30,15 +30,19 @@ const foreground = new THREE.Mesh (
 foreground.position.z = 2;
 scene.add( foreground );
 
-const light1 = new THREE.PointLight( 0xfca247, 10, 8 );
+const light1 = new THREE.PointLight( 0xF6730C, 6, 8 );
 light1.position.set( -4, -2, 1 );
 scene.add( light1 );
 
-const light2 = new THREE.PointLight( 0x47c3fc, 10, 8 );
-light2.position.set ( 5, 2, 1);
+const light2 = new THREE.PointLight( 0xEB2200, 6, 8 );
+light2.position.set( 5, 2, 1);
 scene.add( light2 );
 
-const lights = [light1, light2];
+const light3 = new THREE.PointLight( 0xF60C7E, 6, 8 );
+light3.position.set( 0, 0, 1 );
+scene.add( light3 );
+
+const lights = [light1, light2, light3];
 
 const ambientLight = new THREE.AmbientLight( 0x404040, 0.8 );
 scene.add( ambientLight );
