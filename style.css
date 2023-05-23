@@ -52,11 +52,10 @@ p {
 }
 
 #hero-text {
-    /* font-family: 'Roboto', sans-serif; */
     font-family: 'Poppins', sans-serif;
     width: 800px;
     height: auto;
     position: absolute;
-    top: 250px;
-    left: 600px;
+    top: 20%;
+    left: 23%;
 }
