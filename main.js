@@ -17,6 +17,12 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
+window.addEventListener('resize', () => {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+});
+
 const rockAlbedo = new THREE.TextureLoader().load('img/rock_surface/vlzkba1fw_4K_Albedo.jpg');
 const rockNormal = new THREE.TextureLoader().load('img/rock_surface/vlzkba1fw_4K_Normal.jpg');
 
