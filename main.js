@@ -1,5 +1,14 @@
 import * as THREE from 'three';
 import { gsap } from 'gsap';
+import imagesLoaded from 'imagesloaded';
+
+gsap.from('#loader-text', {
+    duration: 1,
+    opacity: 0,
+    ease: "power1.out"
+});
+
+await new Promise(resolve => setTimeout(resolve, 1000)); // wait 1000ms
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -94,15 +103,35 @@ const animate = () => {
 	renderer.render( scene, camera );
 }
 
+animate();
+
+const content = document.querySelector('html');
+const imgLoad = imagesLoaded(content);
+
 const heroElements = document.getElementById('hero-text').querySelectorAll('*');
 
-gsap.from(heroElements, {
-    duration: 0.5,
-    delay: 1.5,
-    stagger: 0.1,
-    opacity: 0,
-    y: 28,
-    ease: "power1.out"
-});
+imgLoad.on('done', instance => {
+    console.log('Images loaded');
+    
+    const tl = gsap.timeline();
 
-animate();
+    tl.to('#loader-text', {
+        duration: 0.2,
+        delay: 2,
+        opacity: 0,
+        scale: 0,
+        ease: "Power3.out"
+    });
+    tl.to('.blinder', {
+        scaleY: 0,
+        stagger: 0.05,
+        ease: "Power1.out"
+    });
+    tl.from(heroElements, {
+        duration: 0.5,
+        stagger: 0.1,
+        opacity: 0,
+        y: 28,
+        ease: "power1.out"
+    }, ">-0.4");    
+});

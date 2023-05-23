@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300&display=swap');
 
 body { 
-    margin: 0; 
+    margin: 0;
+    height: 100dvh;
+    font-family: 'Poppings', sans-serif;
 }
 
 h1 {
@@ -12,6 +14,41 @@ h1 {
 p {
     color: rgb(201, 201, 201);
     font-size: 40px;
+}
+
+.loader {
+    position: absolute;
+    height: 100dvh;
+    width: 100%;
+    z-index: 999;
+}
+
+.blinder-container {
+    position: absolute;
+    width: 100%;
+    height: 100dvh;
+    top: 0;
+    display: flex;
+}
+
+.blinder {
+    background: #681825;
+    height: 100dvh;
+    flex: 1;
+    transform-origin: top;
+}
+
+#loader-text {
+    position: absolute;
+    margin: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 300;
 }
 
 #hero-text {
