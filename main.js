@@ -2,14 +2,6 @@ import * as THREE from 'three';
 import { gsap } from 'gsap';
 import imagesLoaded from 'imagesloaded';
 
-gsap.from('#loader-text', {
-    duration: 1,
-    opacity: 0,
-    ease: "power1.out"
-});
-
-await new Promise(resolve => setTimeout(resolve, 1000)); // wait 1000ms
-
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
@@ -123,7 +115,7 @@ imgLoad.on('done', instance => {
 
     tl.to('#loader-text', {
         duration: 0.2,
-        delay: 2,
+        delay: 3,
         opacity: 0,
         scale: 0,
         ease: "Power3.out"
